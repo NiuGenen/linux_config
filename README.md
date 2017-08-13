@@ -6,3 +6,8 @@
 # zshrc
 
 - oh-my-zsh : https://github.com/robbyrussell/oh-my-zsh
+
+# tmux
+
+- Tmux Plugin Manager : https://github.com/tmux-plugins/tpm
+- MAGLEV : https://github.com/caiogondim/maglev
