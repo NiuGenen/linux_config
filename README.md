@@ -15,3 +15,10 @@
 
 - Tmux Plugin Manager : https://github.com/tmux-plugins/tpm
 - MAGLEV : https://github.com/caiogondim/maglev
+
+# For Mac
+
+- all the same
+- using homebrew to download missing package such as CMake, which is needed to install YouCompleteMe
+    - /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    - more information about homebrew : https://brew.sh
