@@ -2,11 +2,11 @@
 "需要先安装插件vim-plug
 "curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 call plug#begin('~/.vim/plugged')
-Plug 'dyng/ctrlsf.vim'
+"Plug 'dyng/ctrlsf.vim'
 Plug 'SirVer/ultisnips'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
 Plug 'mhinz/vim-signify'
 Plug 'rdnetto/YCM-Generator'
 Plug 'derekwyatt/vim-fswitch'
@@ -32,11 +32,13 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'easymotion/vim-easymotion'
 Plug 'honza/vim-snippets'
+Plug 'lervag/vimtex' "tex environment for vim
 call plug#end()
 
 "设置编码
 set encoding=utf-8
 "设置行号
+"set relativenumber
 set number
 "设置换行和缩进
 set smartindent
@@ -55,16 +57,8 @@ set nocompatible
 
 "设置鼠标开启
 set mouse=a
-" 设主题颜色为dracula
-"if !empty(glob("~/.vim/plugged/vim/colors/dracula.vim"))
-"    syntax on
-"    set t_Co=256
-"    set background=dark
-"    colorscheme dracula
-"    hi Normal ctermfg=white ctermbg=black
-"endif 
-
-if !empty(glob("/usr/share/vim/vim74/colors/lucius.vim"))
+" 设主题颜色为 lucius
+if !empty(glob("/usr/share/vim/vim80/colors/lucius.vim"))
     set background=dark
     colorscheme lucius
     LuciusDark
@@ -74,11 +68,78 @@ endif
 let mapleader=","
 
 " 设置背景在黑色和透明间切换
-map <leader>bn :hi Normal ctermfg=white ctermbg=none<CR>
-map <leader>nb :hi Normal ctermfg=white ctermbg=black<CR>
+nnoremap <leader>bn :hi Normal ctermfg=white ctermbg=none<CR>
+nnoremap <leader>nb :hi Normal ctermfg=white ctermbg=black<CR>
+
+
+
+
+
+
+" inseresting mapping ----------------------------------
+
+" open new window to edit ~/.vimrc
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+" let vimrc become effect now!
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" surrand a word with "
+nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
+
+" full page up
+"nnoremap cb <C-b>
+" full page down
+"nnoremap cf <C-f>
+" half page up
+nnoremap ck <C-u>
+" half page down
+nnoremap cj <C-d>
+
+" move cursor to the end of current line
+nnoremap cl $
+" move cursor to the begining of current line
+nnoremap ch 0
+
+map <left> <nop>
+map <up> <nop>
+map <down> <nop>
+map <right> <nop>
+
+nnoremap <leader>hex :%!xxd
+
+" interesting mapping ----------------------------------
+
+
+
+
+
+" my information short cut ----------------------------
+
+iabbrev ng_email 602131568@qq.com
+iabbrev ng_name1 NiuGenen
+iabbrev ng_name2 木艮氵
+iabbrev ng_address https://blog.csdn.net/stringNewName
+
+" my information short cut ----------------------------
+
+
+
+
+
+" operator pending ------------------------
+
+" onoremap b /return<cr>
+onoremap sp i(
+
+" operator pending ------------------------
+
+
+
+
+
 
 "让配置立即生效
-autocmd BufWritePost $MYVIMRC source $MYVIMRC
+" autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
 " 设置代码大括号间联系插件indent_guides
 " 随 vim 自启动
@@ -98,41 +159,41 @@ let g:UltiSnipsJumpBackwardTrigger="<leader><s-tab>"
 let g:UltiSnipsSnippetDirectories=["~/.vim/mysnippets"]
 
 "设置YouCompleteMe代码补全和跳转插件
-if !empty(glob("~/.vim/plugged/YouCompleteMe/third_party/ycmd/ycm_core.so"))
+"if !empty(glob("~/.vim/plugged/YouCompleteMe/third_party/ycmd/ycm_core.so"))
     " YCM 补全菜单配色
     "选中项
-    nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
-    highlight Pmenu ctermfg=3 ctermbg=0  guifg=#005f87 guibg=#EEE8D5
+    "nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
+    "highlight Pmenu ctermfg=3 ctermbg=0  guifg=#005f87 guibg=#EEE8D5
     "let g:ycm_server_python_interpreter='/usr/bin/python3'
-    let g:ycm_global_ycm_extra_conf = '/home/ng/.ycm_extra_conf.py'
+    "let g:ycm_global_ycm_extra_conf = '/home/ng/.ycm_extra_conf.py'
     "回车即选中当前项"
-    inoremap <expr> <CR>    pumvisible() ? "\<C-y>" : "\<CR>"
-    nnoremap <C-b> :YcmCompleter GoToDefinitionElseDeclaration <CR>
+    "inoremap <expr> <CR>    pumvisible() ? "\<C-y>" : "\<CR>"
+    "nnoremap <C-b> :YcmCompleter GoToDefinitionElseDeclaration <CR>
     " 补全功能在注释中同样有效
-    let g:ycm_complete_in_comments=1
+    "let g:ycm_complete_in_comments=1
     " 允许 vim 加载 .ycm_extra_conf.py 文件，不再提示
-    let g:ycm_confirm_extra_conf=0
-    " 开启 YCM 标签补全引擎
-    let g:ycm_collect_identifiers_from_tags_files=1
-    " 引入 C++ 标准库tags
-    set tags+=/home/raohui/.vim/tags/stdcpp.tags
-    " YCM 集成 OmniCppComplete 补全引擎，设置其快捷键
-    inoremap <leader>; <C-x><C-o>
-    " 补全内容不以分割子窗口形式出现，只显示补全列表
-    set completeopt-=preview
-    " 禁止缓存匹配项，每次都重新生成匹配项
-    let g:ycm_cache_omnifunc=0
-    " 语法关键字补全
-    let g:ycm_seed_identifiers_with_syntax=1
-    let g:ycm_key_invoke_completion = '<C-a>'
-endif
+    "let g:ycm_confirm_extra_conf=0
+    "" 开启 YCM 标签补全引擎
+    "let g:ycm_collect_identifiers_from_tags_files=1
+    "" 引入 C++ 标准库tags
+    "set tags+=/home/raohui/.vim/tags/stdcpp.tags
+    "" YCM 集成 OmniCppComplete 补全引擎，设置其快捷键
+    "inoremap <leader>; <C-x><C-o>
+    "" 补全内容不以分割子窗口形式出现，只显示补全列表
+    "set completeopt-=preview
+    "" 禁止缓存匹配项，每次都重新生成匹配项
+    "let g:ycm_cache_omnifunc=0
+    "" 语法关键字补全
+    "let g:ycm_seed_identifiers_with_syntax=1
+    "let g:ycm_key_invoke_completion = '<C-a>'
+"endif
 
 " 设置文件中光标快速移动插件EasyMotion
 let g:EasyMotion_do_mapping = 0
 map / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 map n <Plug>(easymotion-next)
-map N <Plug>(easymotion-prev)
+map m <Plug>(easymotion-prev)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 
@@ -153,8 +214,8 @@ let NERDTreeAutoDeleteBuffer=1
 " 使用 ctrlsf.vim
 " 插件在工程内全局查找光标所在关键字，设置快捷键。快捷键速记法：search in
 " project
-let g:ctrlsf_ackprg = 'ag'
-nnoremap <C-f> :CtrlSF
+"let g:ctrlsf_ackprg = 'ag'
+"nnoremap <C-f> :CtrlSF
 
 "设置标签生成插件gtags.vim 设置项
 let GtagsCscope_Auto_Load = 1
@@ -172,8 +233,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
 "设置切换Buffer快捷键"
-nnoremap <F2> :bn<CR>
-nnoremap <F3> :bp<CR>
+nnoremap ,[ :bp<CR>
+nnoremap ,] :bn<CR>
 
 " 设置搜索文件插件CtrlP快捷键
 map <C-p> :CtrlP<CR>
@@ -191,13 +252,13 @@ let g:multi_cursor_skip_key='<C-k>'
 let g:multi_cursor_quit_key='<Esc>'
 
 " 设置代码检查ale
-set nocompatible
-filetype off
-let &runtimepath.=',~/.vim/plugged/ale/'
-filetype plugin on
-let g:ale_sign_column_always = 1
-let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '--'
+" set nocompatible
+" filetype off
+"let &runtimepath.=',~/.vim/plugged/ale/'
+"filetype plugin on
+"let g:ale_sign_column_always = 1
+"let g:ale_sign_error = '>>'
+"let g:ale_sign_warning = '--'
 
 " 设置保存快捷键
 map <C-s> :w<CR>
@@ -248,5 +309,52 @@ let g:tagbar_type_cpp = {
             \ 'union'     : 'u'
             \ }
             \ }
+
+":function Asd(...)
+":   echom a:0
+":   echom a:1
+":   echom a:2
+":   let alist = a:4
+":   echo alist
+":   call add(alist,"uio")
+":   echo alist
+":endfunction
+
+"let aaa = ['qwe','zxc','asd']
+"call Asd("qwe","zxc","asd", aaa )
+"echo aaa
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
