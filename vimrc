@@ -2,11 +2,11 @@
 "需要先安装插件vim-plug
 "curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 call plug#begin('~/.vim/plugged')
-"Plug 'dyng/ctrlsf.vim'
+Plug 'dyng/ctrlsf.vim'
 Plug 'SirVer/ultisnips'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-"Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 Plug 'mhinz/vim-signify'
 Plug 'rdnetto/YCM-Generator'
 Plug 'derekwyatt/vim-fswitch'
@@ -54,14 +54,32 @@ set shiftwidth=4
 set softtabstop=4
 set backspace=2
 set nocompatible
+" 关闭多行显示
+" 当一行太长超过窗口的显示范围是，不换行
+set nowrap
 
 "设置鼠标开启
 set mouse=a
 " 设主题颜色为 lucius
-if !empty(glob("/usr/share/vim/vim80/colors/lucius.vim"))
-    set background=dark
-    colorscheme lucius
-    LuciusDark
+if !empty(glob("/usr/share/vim/vim74/colors/lucius.vim"))
+    "set background=dark
+    "colorscheme lucius
+    "colorscheme zellner 
+    "colorscheme blue
+    "colorscheme darkblue
+    "colorscheme default
+    "colorscheme desert
+    "colorscheme elflord
+    "colorscheme morning
+    "colorscheme koehler 
+    "colorscheme murphy
+    "colorscheme pablo
+    "colorscheme peachpuff
+    "colorscheme ron
+    "colorscheme shine
+    "colorscheme slate
+    colorscheme torte
+    "LuciusDark
 endif
 
 " 设置leader键
@@ -99,6 +117,9 @@ nnoremap cj <C-d>
 nnoremap cl $
 " move cursor to the begining of current line
 nnoremap ch 0
+
+nnoremap vs :vsplit<cr>
+nnoremap ss :split<cr>
 
 map <left> <nop>
 map <up> <nop>
