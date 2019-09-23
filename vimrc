@@ -17,7 +17,7 @@ Plug 'honza/vim-snippets'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 Plug 'scrooloose/nerdcommenter'
-Plug 'w0rp/ale'
+"Plug 'w0rp/ale'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'majutsushi/tagbar'
 Plug 'justinmk/vim-sneak'
@@ -62,8 +62,8 @@ set nowrap
 set mouse=a
 " 设主题颜色为 lucius
 if !empty(glob("/usr/share/vim/vim74/colors/lucius.vim"))
-    "set background=dark
-    "colorscheme lucius
+    set background=dark
+    colorscheme lucius
     "colorscheme zellner 
     "colorscheme blue
     "colorscheme darkblue
@@ -78,7 +78,7 @@ if !empty(glob("/usr/share/vim/vim74/colors/lucius.vim"))
     "colorscheme ron
     "colorscheme shine
     "colorscheme slate
-    colorscheme torte
+    "colorscheme torte
     "LuciusDark
 endif
 
