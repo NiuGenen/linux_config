@@ -2,44 +2,47 @@
 "需要先安装插件vim-plug
 "curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 call plug#begin('~/.vim/plugged')
-Plug 'dyng/ctrlsf.vim'
-Plug 'SirVer/ultisnips'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'Valloric/YouCompleteMe'
-Plug 'mhinz/vim-signify'
-Plug 'rdnetto/YCM-Generator'
-Plug 'derekwyatt/vim-fswitch'
-Plug 'aceofall/gtags.vim'
-Plug 'Chiel92/vim-autoformat'
-Plug 'junegunn/vim-easy-align'
-Plug 'honza/vim-snippets'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-Plug 'scrooloose/nerdcommenter'
+Plug 'dyng/ctrlsf.vim' " ------------------------------------------------
+Plug 'SirVer/ultisnips' " ----------------------------------------------- code template
+Plug 'vim-airline/vim-airline' " ----------------------------------------
+Plug 'vim-airline/vim-airline-themes' " ---------------------------------
+"Plug 'Valloric/YouCompleteMe'
+Plug 'mhinz/vim-signify' " ----------------------------------------------
+Plug 'rdnetto/YCM-Generator' " ------------------------------------------
+Plug 'derekwyatt/vim-fswitch' " -----------------------------------------
+Plug 'aceofall/gtags.vim' " ---------------------------------------------
+Plug 'Chiel92/vim-autoformat' " -----------------------------------------
+Plug 'junegunn/vim-easy-align' " ---------------------------------------- fast align multiple line 
+Plug 'honza/vim-snippets' " --------------------------------------------- code template
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } " ---------------
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' } " ------------------
+Plug 'scrooloose/nerdcommenter' " ---------------------------------------
 "Plug 'w0rp/ale'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'majutsushi/tagbar'
-Plug 'justinmk/vim-sneak'
-Plug 'rking/ag.vim'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'derekwyatt/vim-fswitch'
-Plug 'godlygeek/tabular'
-Plug 'dracula/vim'
-Plug 'tomasr/molokai'
-Plug 'jiangmiao/auto-pairs'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'easymotion/vim-easymotion'
-Plug 'honza/vim-snippets'
-Plug 'lervag/vimtex' "tex environment for vim
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " -----
+Plug 'majutsushi/tagbar' " ----------------------------------------------
+Plug 'justinmk/vim-sneak' " ---------------------------------------------
+Plug 'rking/ag.vim' " ---------------------------------------------------
+Plug 'terryma/vim-multiple-cursors' " -----------------------------------
+Plug 'ctrlpvim/ctrlp.vim' " ---------------------------------------------
+Plug 'derekwyatt/vim-fswitch' " -----------------------------------------
+Plug 'godlygeek/tabular' " ----------------------------------------------
+Plug 'dracula/vim' " ----------------------------------------------------
+Plug 'tomasr/molokai' " -------------------------------------------------
+Plug 'jiangmiao/auto-pairs' " -------------------------------------------
+"Plug 'nathanaelkane/vim-indent-guides'
+Plug 'easymotion/vim-easymotion' " --------------------------------------
+Plug 'honza/vim-snippets' " ---------------------------------------------
+Plug 'lervag/vimtex'  " ------------------------------------------------- tex environment for vim
+Plug 'psliwka/vim-smoothie' " ------------------------------------------- smooth page up and page down
 call plug#end()
+
+xmap ga <Plug>(EasyAlign)
 
 "设置编码
 set encoding=utf-8
 "设置行号
-"set relativenumber
-set number
+set relativenumber
+"set nonumber
 "设置换行和缩进
 set smartindent
 " 自适应不同语言的智能缩进
@@ -88,8 +91,7 @@ let mapleader=","
 " 设置背景在黑色和透明间切换
 nnoremap <leader>bn :hi Normal ctermfg=white ctermbg=none<CR>
 nnoremap <leader>nb :hi Normal ctermfg=white ctermbg=black<CR>
-
-
+hi Normal ctermfg=white ctermbg=black
 
 
 
@@ -128,6 +130,10 @@ map <right> <nop>
 
 nnoremap <leader>hex :%!xxd
 
+nnoremap <leader>q :q<cr>
+nnoremap <leader>w :w<cr>
+nnoremap <leader>wq :wq<cr>
+
 " interesting mapping ----------------------------------
 
 
@@ -164,13 +170,13 @@ onoremap sp i(
 
 " 设置代码大括号间联系插件indent_guides
 " 随 vim 自启动
-let g:indent_guides_enable_on_vim_startup=1
+"let g:indent_guides_enable_on_vim_startup=1
 " 从第二层开始可视化显示缩进
-let g:indent_guides_start_level=2
+"let g:indent_guides_start_level=2
 " 色块宽度
-let g:indent_guides_guide_size=1
+"let g:indent_guides_guide_size=1
 " 快捷键i开/关缩进可视化
-nmap <silent> <Leader>i <Plug>IndentGuidesToggle
+"nmap <silent> <leader>i <Plug>IndentGuidesToggle
 
 "设置模板补全插件UltiSnips
 "tab 键与 YCM 冲突，重新设定
@@ -222,7 +228,7 @@ map <Leader>k <Plug>(easymotion-k)
 " 快捷键
 map <leader>l :NERDTreeToggle<CR>
 " 设置NERDTree子窗口宽度
-let NERDTreeWinSize=35
+let NERDTreeWinSize=20
 " 设置NERDTree子窗口位置
 let NERDTreeWinPos="left"
 " 显示隐藏文件
