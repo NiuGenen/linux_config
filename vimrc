@@ -3,7 +3,7 @@
 "curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 call plug#begin('~/.vim/plugged')
 Plug 'dyng/ctrlsf.vim' " ------------------------------------------------
-Plug 'SirVer/ultisnips' " ----------------------------------------------- code template
+"Plug 'SirVer/ultisnips' " ----------------------------------------------- code template
 Plug 'vim-airline/vim-airline' " ----------------------------------------
 Plug 'vim-airline/vim-airline-themes' " ---------------------------------
 "Plug 'Valloric/YouCompleteMe'
@@ -38,10 +38,13 @@ call plug#end()
 
 xmap ga <Plug>(EasyAlign)
 
+" high light current line
+set cursorline
+
 "设置编码
 set encoding=utf-8
 "设置行号
-set relativenumber
+"set relativenumber
 "set nonumber
 "设置换行和缩进
 set smartindent
@@ -106,14 +109,15 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " surrand a word with "
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
 
+map c <nop>
 " full page up
 "nnoremap cb <C-b>
 " full page down
 "nnoremap cf <C-f>
 " half page up
-nnoremap ck <C-u>
+nmap ck <C-u>
 " half page down
-nnoremap cj <C-d>
+nmap cj <C-d>
 
 " move cursor to the end of current line
 nnoremap cl $
@@ -122,6 +126,22 @@ nnoremap ch 0
 
 nnoremap vs :vsplit<cr>
 nnoremap ss :split<cr>
+nnoremap <leader>v1 :vertical resize 10<cr>
+nnoremap <leader>v2 :vertical resize 20<cr>
+nnoremap <leader>v3 :vertical resize 30<cr>
+nnoremap <leader>v4 :vertical resize 40<cr>
+nnoremap <leader>v5 :vertical resize 50<cr>
+nnoremap <leader>v6 :vertical resize 60<cr>
+nnoremap <leader>v7 :vertical resize 70<cr>
+nnoremap <leader>v8 :vertical resize 80<cr>
+nnoremap <leader>s1 :resize 10<cr>
+nnoremap <leader>s2 :resize 20<cr>
+nnoremap <leader>s3 :resize 30<cr>
+nnoremap <leader>s4 :resize 40<cr>
+nnoremap <leader>s5 :resize 50<cr>
+nnoremap <leader>s6 :resize 60<cr>
+nnoremap <leader>s7 :resize 70<cr>
+nnoremap <leader>s8 :resize 80<cr>
 
 map <left> <nop>
 map <up> <nop>
@@ -133,6 +153,9 @@ nnoremap <leader>hex :%!xxd
 nnoremap <leader>q :q<cr>
 nnoremap <leader>w :w<cr>
 nnoremap <leader>wq :wq<cr>
+
+nnoremap <leader>t :term<cr>
+
 
 " interesting mapping ----------------------------------
 
