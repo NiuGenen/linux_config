@@ -1,0 +1,15 @@
+
+alias l="ls -lh"
+alias ll="ls -l"
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+
+alias gst="git status"
+alias gco="git checkout"
+alias grb="git rebase"
+alias gpl="git pull origin"
+alias gph="git push origin"
