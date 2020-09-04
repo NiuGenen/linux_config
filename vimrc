@@ -9,7 +9,6 @@ Plug 'vim-airline/vim-airline-themes' " ---------------------------------
 "Plug 'Valloric/YouCompleteMe'
 Plug 'mhinz/vim-signify' " ----------------------------------------------
 Plug 'rdnetto/YCM-Generator' " ------------------------------------------
-Plug 'derekwyatt/vim-fswitch' " -----------------------------------------
 Plug 'aceofall/gtags.vim' " ---------------------------------------------
 Plug 'Chiel92/vim-autoformat' " -----------------------------------------
 Plug 'junegunn/vim-easy-align' " ---------------------------------------- fast align multiple line 
@@ -29,11 +28,13 @@ Plug 'godlygeek/tabular' " ----------------------------------------------
 Plug 'dracula/vim' " ----------------------------------------------------
 Plug 'tomasr/molokai' " -------------------------------------------------
 Plug 'jiangmiao/auto-pairs' " -------------------------------------------
-"Plug 'nathanaelkane/vim-indent-guides'
+Plug 'nathanaelkane/vim-indent-guides'
 Plug 'easymotion/vim-easymotion' " --------------------------------------
 Plug 'honza/vim-snippets' " ---------------------------------------------
 Plug 'lervag/vimtex'  " ------------------------------------------------- tex environment for vim
 Plug 'psliwka/vim-smoothie' " ------------------------------------------- smooth page up and page down
+Plug 'inkakat/vim-mark' " ----------------------------------------------- color mark different word
+Plug 'inkakat/vim-ingo-library' " --------------------------------------- lib for abrove
 call plug#end()
 
 xmap ga <Plug>(EasyAlign)
@@ -49,7 +50,7 @@ set encoding=utf-8
 "设置换行和缩进
 set smartindent
 " 自适应不同语言的智能缩进
-filetype indent on
+"filetype indent on
 " 将制表符扩展为空格
 set expandtab
 " 设置编辑时制表符占用空格数
@@ -57,9 +58,9 @@ set tabstop=4
 " 设置格式化时制表符占用空格数
 set shiftwidth=4
 " 让vim 把连续数量的空格视为一个制表符
-set softtabstop=4
-set backspace=2
-set nocompatible
+"set softtabstop=4
+"set backspace=2
+"set nocompatible
 " 关闭多行显示
 " 当一行太长超过窗口的显示范围是，不换行
 set nowrap
@@ -96,7 +97,12 @@ nnoremap <leader>bn :hi Normal ctermfg=white ctermbg=none<CR>
 nnoremap <leader>nb :hi Normal ctermfg=white ctermbg=black<CR>
 hi Normal ctermfg=white ctermbg=black
 
-
+" up to 18 colors in vim-mark
+let g:mwDefaultHighlightingPalette="maximum"
+"let g:mwDefaultHighlightingPalette = [ 
+"\   { 'ctermbg':'Cyan', 'ctermfg':'Black', 'guibg':'#8CCBEA', 'guifg':'Black' }
+"\ ]
+" let g:mwDefaultHighlightingNum = 9
 
 
 " inseresting mapping ----------------------------------
@@ -148,11 +154,22 @@ map <up> <nop>
 map <down> <nop>
 map <right> <nop>
 
+" ctags + cscope ----------------
+
+" search defination
+nnoremap <leader>d <C-]>
+" return
+nnoremap <leader>f <C-t>
+" search call
+nnoremap <leader>c :cs find c 
+
+" ctags + cscope ----------------
+
 nnoremap <leader>hex :%!xxd
 
 nnoremap <leader>q :q<cr>
 nnoremap <leader>w :w<cr>
-nnoremap <leader>wq :wq<cr>
+nnoremap <leader>z :qa<cr>
 
 nnoremap <leader>t :term<cr>
 
@@ -169,6 +186,11 @@ iabbrev ng_email 602131568@qq.com
 iabbrev ng_name1 NiuGenen
 iabbrev ng_name2 木艮氵
 iabbrev ng_address https://blog.csdn.net/stringNewName
+
+iabbrev ng_line1 ----------------------------------------------------------------
+iabbrev ng_line2 ================================================================
+iabbrev ng_line3 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+iabbrev ng_line4 ****************************************************************
 
 " my information short cut ----------------------------
 
@@ -193,13 +215,13 @@ onoremap sp i(
 
 " 设置代码大括号间联系插件indent_guides
 " 随 vim 自启动
-"let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_enable_on_vim_startup=1
 " 从第二层开始可视化显示缩进
-"let g:indent_guides_start_level=2
+let g:indent_guides_start_level=2
 " 色块宽度
-"let g:indent_guides_guide_size=1
+let g:indent_guides_guide_size=1
 " 快捷键i开/关缩进可视化
-"nmap <silent> <leader>i <Plug>IndentGuidesToggle
+nmap <silent> <leader>i <Plug>IndentGuidesToggle
 
 "设置模板补全插件UltiSnips
 "tab 键与 YCM 冲突，重新设定
