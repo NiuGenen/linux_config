@@ -31,7 +31,7 @@ Plug 'jiangmiao/auto-pairs' " -------------------------------------------
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'easymotion/vim-easymotion' " --------------------------------------
 Plug 'honza/vim-snippets' " ---------------------------------------------
-Plug 'lervag/vimtex'  " ------------------------------------------------- tex environment for vim
+"Plug 'lervag/vimtex'  " ------------------------------------------------- tex environment for vim
 Plug 'psliwka/vim-smoothie' " ------------------------------------------- smooth page up and page down
 Plug 'inkakat/vim-mark' " ----------------------------------------------- color mark different word
 Plug 'inkakat/vim-ingo-library' " --------------------------------------- lib for abrove
